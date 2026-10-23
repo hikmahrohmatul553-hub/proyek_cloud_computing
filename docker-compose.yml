@@ -1,0 +1,33 @@
+services:
+  web-app:
+    build: .
+    container_name: container_web
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - db-proxy
+
+  db-proxy:
+    image: proxysql/proxysql:latest
+    container_name: container_proxy
+    restart: always
+    ports:
+      - "6033:6033"
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql:8.0
+    container_name: container_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: passwordroot123
+      MYSQL_DATABASE: db_proyek
+      MYSQL_USER: user_app
+      MYSQL_PASSWORD: password_app
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
