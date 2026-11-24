@@ -22,7 +22,7 @@ services:
     container_name: container_mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: passwordroot123
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: db_proyek
       MYSQL_USER: user_app
       MYSQL_PASSWORD: password_app

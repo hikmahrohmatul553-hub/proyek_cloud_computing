@@ -1,0 +1,6 @@
+.git/
+*.swp
+*.bak
+.env
+.env.*
+!.env.example
